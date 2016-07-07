@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
+import argparse
+import json
+
+
+def main():
+    argp = argparse.ArgumentParser()
+    argp.add_argument('jsonfile')
+    args = argp.parse_args()
+    with open(args.jsonfile) as f:
+        # does not support huge file
+        lines = f.readlines()
+        try:
+            json.loads(''.join(lines))
+        except Exception as e:
+            # Expecting property name: line 3 column 1 (char 29)
+            reported_line = int(str(e).split('line')[1].split('column')[0])
+            print('Error: {0}'.format(e))
+            fileline = reported_line - 1
+
+            # Print out erroneous line with the line before and after
+            if fileline - 1 > 0:
+                print(reported_line-1, lines[fileline-1], end='')
+            if fileline > 0:
+                print(reported_line, lines[fileline].rstrip(),
+                      '<----- this or maybe the line above is informal,'
+                      ' such as redundant or missing `,`. See http://json.org'
+                      ' for JSON format.')
+            try:
+                print(reported_line+1, lines[fileline+1])
+            except Exception:
+                pass
+
+
+if __name__ == "__main__":
+    main()
