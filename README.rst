@@ -1,7 +1,7 @@
 pjv - Python JSON Validator
 ===========================
 
-PJV helps validating and find erroneous line in JSON file.
+PJV helps validating and find erroneous line in JSON file (as far as it can) .
 
 Installation
 ------------

@@ -8,7 +8,7 @@ except ImportError:
 
 setup(
     name='pjv',
-    version='0.8.0',
+    version='0.8.2',
     description='JSON Python Validator',
     scripts=['scripts/pjv'],
     long_description=open('README.rst').read(),
