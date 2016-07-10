@@ -4,6 +4,7 @@
 from __future__ import print_function
 import argparse
 import json
+import sys
 
 
 def main():
@@ -17,8 +18,13 @@ def main():
             json.loads(''.join(lines))
         except Exception as e:
             # Expecting property name: line 3 column 1 (char 29)
-            reported_line = int(str(e).split('line')[1].split('column')[0])
             print('Error: {0}'.format(e))
+            try:
+                reported_line = int(str(e).split('line')[1].split('column')[0])
+            except Exception:
+                # redundant , before a missing ]
+                print("I don't know why, please do it yourself")
+                sys.exit(1)
             fileline = reported_line - 1
 
             # Print out erroneous line with the line before and after
