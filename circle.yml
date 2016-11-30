@@ -1,0 +1,4 @@
+test:
+    post:
+        - flake8 *.py
+        - pylint *.py
