@@ -1,7 +1,7 @@
 pjv - Python JSON Validator
 ===========================
-
-[![CircleCI](https://circleci.com/gh/hvnsweeting/pjv.svg?style=svg)](https://circleci.com/gh/hvnsweeting/pjv)
+.. image:: https://circleci.com/gh/hvnsweeting/pjv.svg?style=svg
+    :target: https://circleci.com/gh/hvnsweeting/pjv
 
 PJV helps validating and find erroneous line in JSON file (as far as it can) .
 
